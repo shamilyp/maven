@@ -167,7 +167,7 @@ for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do s
 
 :endReadAdditionalConfig
 
-if exist "%MAVEN_HOME%\lib\ext\" set "JANSI_ARGS=-Dlibrary.jansi.path=%MAVEN_HOME%\lib\ext"
+if exist "%MAVEN_HOME%\lib\ext\jansi.dll" set "JANSI_ARGS=-Dlibrary.jansi.path=%MAVEN_HOME%\lib\ext"
 
 for %%i in ("%MAVEN_HOME%"\boot\plexus-classworlds-*) do set CLASSWORLDS_JAR="%%i"
 set CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
