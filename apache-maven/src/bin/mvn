@@ -117,6 +117,13 @@ if $cygwin ; then
     CLASSWORLDS_JAR=`cygpath --path --windows "$CLASSWORLDS_JAR"`
 fi
 
+for libjansi in ${MAVEN_HOME}/lib/ext/libjansi-* ; do
+  if [ -x "$libjansi" ] ; then
+    MAVEN_OPTS="$MAVEN_OPTS -Dlibrary.jansi.path=${libjansi}"
+    break
+  fi
+done
+
 # traverses directory structure from process work directory to filesystem root
 # first directory with .mvn subdirectory is considered project base directory
 find_maven_basedir() {
@@ -191,5 +198,4 @@ exec "$JAVACMD" \
   -classpath "${CLASSWORLDS_JAR}" \
   "-Dclassworlds.conf=${MAVEN_HOME}/bin/m2.conf" \
   "-Dmaven.home=${MAVEN_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
-  "-Dlibrary.jansi.path=${MAVEN_HOME}/lib/ext" \
   ${CLASSWORLDS_LAUNCHER} "$@"
