@@ -172,6 +172,8 @@ if exist "%MAVEN_HOME%\lib\ext\jansi.dll" set "JANSI_ARGS=-Dlibrary.jansi.path=%
 for %%i in ("%MAVEN_HOME%"\boot\plexus-classworlds-*) do set CLASSWORLDS_JAR="%%i"
 set CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
 
+if exist "%MAVEN_HOME%\lib\ext\jansi.dll" set "JANSI_ARGS=-Dlibrary.jansi.path=%MAVEN_HOME%\lib\ext\jansi.dll"
+
 "%JAVACMD%" ^
   %JVM_CONFIG_MAVEN_PROPS% ^
   %MAVEN_OPTS% ^
